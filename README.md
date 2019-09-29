@@ -1,6 +1,6 @@
-DinenowRest
-============
+alidnd.com Backend
+==================
 
-Symfony Backend for Dinenow Stepwizard
+Symfony Backend for alidnd.com 
 
 bin/console serve:run
