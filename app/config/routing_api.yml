@@ -1,0 +1,3 @@
+dinenow_user:
+  type: rest
+  resource: "@AppBundle/Controller/AlidndcomController.php"

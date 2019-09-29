@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Portal</th>
+                <th>Url</th>
+                <th>Username</th>
+                <th>Pass</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in link_posts %}
+            <tr>
+                <td>{{ link.id }}</td>
+                <td><a href="http://{{ link.url }}">{{ link.title }}</a></td>
+                <td>{{ link.url }}</td>
+                <td>{{ link.username }}</td>
+                <td>{{ link.pass }}</td>
+                <td>
+                    <a href="{{ path('edit', {'linkPost': link.id}) }}" class="btn btn-default btn-sm" >Edit</a>
+                    <a href="{{ path('delete', {'linkPost': link.id}) }}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
