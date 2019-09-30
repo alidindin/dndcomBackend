@@ -6,7 +6,7 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class AlidndContactRepository extends EntityRepository
+class ContactRepository extends EntityRepository
 {
     public function createFindAllQuery()
     {

@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AlidndContactRespository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
  * @ORM\Table(name="alidndcom_contact")
  */
 class AlidndContact implements \JsonSerializable
@@ -56,7 +56,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Set name
      *
-     * @param string $name
+     * @param mixed $name
      *
      * @return AlidndContact
      */
@@ -68,7 +68,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Get name
      *
-     * @return string
+     * @return mixed
      */
     public function getName()
     {
@@ -77,7 +77,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Set email
      *
-     * @param string $email
+     * @param mixed $email
      *
      * @return AlidndContact
      */
@@ -89,7 +89,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Get email
      *
-     * @return string
+     * @return mixed
      */
     public function getEmail()
     {
@@ -98,7 +98,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Set subject
      *
-     * @param string $subject
+     * @param mixed $subject
      *
      * @return AlidndContact
      */
@@ -110,7 +110,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Get subject
      *
-     * @return string
+     * @return mixed
      */
     public function getSubject()
     {
@@ -119,7 +119,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Set message
      *
-     * @param string $message
+     * @param mixed $message
      *
      * @return AlidndContact
      */
@@ -131,7 +131,7 @@ class AlidndContact implements \JsonSerializable
     /**
      * Get message
      *
-     * @return string
+     * @return mixed
      */
     public function getMessage()
     {

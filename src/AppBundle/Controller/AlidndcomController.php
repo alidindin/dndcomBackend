@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\AlidndContact;
 use AppBundle\Form\Type\AlidndContactType;
-use AppBundle\Repository\AlidndContactRepository;
+use AppBundle\Repository\ContactRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Routing\ClassResourceInterface;
@@ -35,7 +35,7 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
      */
     public function getAction($id)
     {
-        return $this->getAlidndContactRepository()->createFindOneByIdQuery($id)->getSingleResult();
+        return $this->getContactRepository()->createFindOneByIdQuery($id)->getSingleResult();
     }
 
     /**
@@ -47,7 +47,7 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
      */
     public function cgetAction()
     {
-        return $this->getAlidndContactRepository()->createFindAllQuery()->getResult();
+        return $this->getContactRepository()->createFindAllQuery()->getResult();
     }
 
     /**
@@ -92,7 +92,7 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
         /**
          * @var $alidndContact AlidndContact
          */
-        $alidndContact = $this->getAlidndContactRepository()->find($id);
+        $alidndContact = $this->getContactRepository()->find($id);
 
         if ( $alidndContact === null ){
             return new View(null, Response::HTTP_NOT_FOUND);
@@ -130,7 +130,7 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
         /**
          * @var $alidndContact AlidndContact
          */
-        $alidndContact = $this->getAlidndContactRepository()->find($id);
+        $alidndContact = $this->getContactRepository()->find($id);
 
         $form = $this->createForm(AlidndContactType::class, $alidndContact, [
             'csrf_protection' => false,
@@ -163,7 +163,7 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
        /**
         * @var $alidndContact AlidndContact
         */
-        $alidndContact = $this->getAlidndContactRepository()->find($id);
+        $alidndContact = $this->getContactRepository()->find($id);
 
        if ( $alidndContact === null ){
            return new View(null, Response::HTTP_NOT_FOUND);
@@ -177,9 +177,9 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
     }
 
     /**
-     * @return AlidndContactRepository
+     * @return ContactRepository
      */
-    public function getAlidndContactRepository()
+    public function getContactRepository()
     {
 
         return $this->get('crv.doctrine_entity_repository.alidnd_contact');
