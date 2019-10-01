@@ -50,6 +50,7 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
         return $this->getContactRepository()->createFindAllQuery()->getResult();
     }
 
+
     /**
      * @param Request $request
      * @return \FOS\RestBundle\View\View|\Symfony\Component\Form\FormInterface
@@ -79,8 +80,19 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
             '_format' => $request->get('format'),
         ];
 
+        // Swiftmailer
+        
+        $message = (new \Swift_Message('Hello this is an Auto Email Service'))
+            ->setFrom('hi@alidnd.com')
+            ->setTo('alidindin@icloud.com')
+
+        ;
+        $this->get('mailer')->send($message);
+
         return $this->routeRedirectView('get_contact', $routeOptions, Response::HTTP_CREATED);
     }
+
+
 
     /**
      * @param Request $request
