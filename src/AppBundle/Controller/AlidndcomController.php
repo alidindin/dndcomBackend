@@ -64,6 +64,7 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
 
         $form->submit($request->request->all());
 
+
         if (!$form->isValid()){
             return $form;
         }
@@ -80,20 +81,40 @@ class AlidndcomController extends AbstractFOSRestController implements ClassReso
             '_format' => $request->get('format'),
         ];
 
-        // Swiftmailer
-        
-        $message = (new \Swift_Message('Hello this is an Auto Email Service'))
+        // Swiftmailer Email to User
+        $name = $form->getData()->getName();
+        $email = $form->getData()->getEmail();
+        $subject = $form->getData()->getSubject();
+        $body = $form->getData()->getMessage();
+        $message = (new \Swift_Message($subject))
+            ->setFrom('hi@alidnd.com')
+            ->setTo($email)
+            ->setBody('Hi ' .$name. ' Thanks for your Email:' .$body. ' I will answer you asap. Best Regards Ali DND')
+        ;
+        $this->get('mailer')->send($message);
+
+        // Swiftmailer Email to Webmaster
+        $name = $form->getData()->getName();
+        $email = $form->getData()->getEmail();
+        $subject = $form->getData()->getSubject();
+        $body = $form->getData()->getMessage();
+        $message = (new \Swift_Message($subject))
             ->setFrom('hi@alidnd.com')
             ->setTo('alidindin@icloud.com')
-
+            ->setBody('Hi Ali,' .'<br />'.
+                            'du hast eine neue Nachricht von :' . '<br />'
+                            .$name. '<br />' .
+                            'Nachricht:' .'<br />'
+                            .$body.
+                            'Absender:'
+                            .$email. '<br />', 'text/html')
         ;
         $this->get('mailer')->send($message);
 
         return $this->routeRedirectView('get_contact', $routeOptions, Response::HTTP_CREATED);
     }
 
-
-
+    
     /**
      * @param Request $request
      * @param $id

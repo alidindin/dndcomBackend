@@ -62,19 +62,14 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport:        smtp
-    username:         hi@alidnd.com
-    password:         mmovss4849
-    host:             smtp.strato.de
+    transport:        '%mailer_transport%'
+    username:         '%mailer_user%'
+    password:         '%mailer_password%'
+    host:             '%mailer_host%'
     port:             465
     encryption:       ssl
     auth-mode:        login
     spool: { type: 'memory' }
-    stream_options:
-        ssl:
-            allow_self_signed: true
-            verify_peer: false
-            verify_peer_name: false
 
 sensio_framework_extra:
    router:
@@ -127,12 +122,14 @@ nelmio_cors:
     paths:
         '^/api/':
             allow_origin: ['*']
+            #allow_headers: ['*']
             allow_headers: ['Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With']
             allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'OPTIONS']
             max_age: 3600
         '^/':
             origin_regex: true
             allow_origin: ['^http://localhost:[8080]+']
+            #allow_headers: ['*']
             allow_headers: ['Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With']
             allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'OPTIONS']
             max_age: 3600
